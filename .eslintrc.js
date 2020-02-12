@@ -1,11 +1,11 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     browser: true,
     es6: true,
     node: true
   },
   extends: [
-    'plugin:vue/essential',
     'standard'
   ],
   globals: {
@@ -16,9 +16,4 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: [
-    'vue'
-  ],
-  rules: {
-  }
 }
