@@ -6,13 +6,15 @@
   "author": "ryuilhwan <ih.ryu.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:api": "dotenv node -r esm src/index.js"
+    "start:api": "dotenv nodemon -r esm src/api-server.js",
+    "start:db": ""
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "mongodb": "^3.5.2"
+    "mongodb": "^3.5.2",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -23,6 +25,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "pm2": "^4.2.3"
   }
 }
