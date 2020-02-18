@@ -1,15 +1,17 @@
-import Express from 'express'
-import { MongoClient } from 'mongodb'
-const app = new Express()
+const Express = require('express')
+const { MongoClient } = require('mongodb')
 
+const app = new Express()
+app.get('/', (req, res) => {
+  res.write('<html><head><title>hello</title></head><body><p>hello world</p></body></html>')
+})
 app.get('/hello', async (req, res) => {
-  const url = `mongodb://${process.env.DB_HOSTNAME}:${process.env.DB_PORT}/${process.env.DBNAME}`
-  const client = new MongoClient(url, {
+  const client = new MongoClient(process.env.MONGO_URL, {
     useNewUrlParser: true
   })
   try {
     await client.connect()
-    const db = client.db(process.env.DBNAME)
+    const db = client.db('coinpet')
     const dbres = await db.collection('coins').findOne()
     res.json(dbres)
   } catch (e) {
@@ -18,7 +20,6 @@ app.get('/hello', async (req, res) => {
     client.close()
   }
   // res.json({a:1})
-  // res.write('<html><head><title>hello</title></head><body><p>hello world</p></body></html>')
 })
 
 app.listen(3000)
