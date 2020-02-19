@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinpet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinpet
+  template:
+    metadata:
+      labels:
+        app: coinpet
+    spec:
+      containers:
+        - name: app
+          image: coinpet
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URL
+              value: mongodb://mongo:27017
+          imagePulPolicy: Always
