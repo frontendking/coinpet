@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: coinpet
+spec:
+  selector:
+    app: coinpet
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,11 +25,11 @@ spec:
         app: coinpet
     spec:
       containers:
-        - name: app
-          image: coinpet
+        - name: coinpet
+          image: nonownonow/coinpet:1.0.1
           ports:
             - containerPort: 3000
           env:
             - name: MONGO_URL
-              value: mongodb://mongo:27017
-          imagePulPolicy: Always
+              value: mongodb://mongo:27017/dev
+          imagePullPolicy: Always
