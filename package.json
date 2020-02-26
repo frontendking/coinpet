@@ -6,7 +6,7 @@
   "author": "ryuilhwan <ih.ryu.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:api": "dotenv node -r esm src/index.js"
+    "server": "node src/server/index.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
