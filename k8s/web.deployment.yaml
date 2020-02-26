@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinpet-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinpet-web
+  template:
+    metadata:
+      labels:
+        app: coinpet-web
+    spec:
+      containers:
+        - name: coinpet-web
+          image: gcr.io/verdant-catcher-269008/coinpet-web:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_URL
+              value: http://coinpet-api:5000
