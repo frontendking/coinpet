@@ -1,14 +1,14 @@
 const Express = require('express')
 const { MongoClient } = require('mongodb')
-
 const app = new Express()
+const dburl = process.env.MONGO_URL || 'mongodb://localhost:27017'
 app.get('/', (req, res) => {
   res.write(
     '<html><head><title>hello</title></head><body><p>hello world</p></body></html>')
   res.end()
 })
 app.get('/coin', async (req, res) => {
-  const client = new MongoClient(process.env.MONGO_URL, {
+  const client = new MongoClient(dburl, {
     useNewUrlParser: true
   })
   try {
@@ -27,7 +27,7 @@ app.get('/coin', async (req, res) => {
   }
 })
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log('connected to coinpet!')
-  console.log(`MONGO_URL:${process.env.MONGO_URL}`)
+  console.log(`MONGO_URL:${dburl}`)
 })

@@ -6,7 +6,7 @@
   "author": "ryuilhwan <ih.ryu.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "server": "node src/server/index.js"
+    "start": "node ./src/index.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
