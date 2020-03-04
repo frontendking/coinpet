@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: coinpet-web
-          image: gcr.io/verdant-catcher-269008/coinpet-web:latest
+          image: gcr.io/verdant-catcher-269008/coinpet/web:latest
           ports:
             - containerPort: 8080
           env:

@@ -1,13 +1,16 @@
 const Express = require('express')
 const { MongoClient } = require('mongodb')
 const app = new Express()
-const dburl = process.env.MONGO_URL || 'mongodb://localhost:27017'
+const dburl = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017'
 app.get('/', (req, res) => {
   res.write(
     '<html><head><title>hello</title></head><body><p>hello world</p></body></html>')
   res.end()
 })
 app.get('/coin', async (req, res) => {
+  res.set({
+    'Access-Control-Allow-Origin': '*'
+  })
   const client = new MongoClient(dburl, {
     useNewUrlParser: true
   })
@@ -27,7 +30,7 @@ app.get('/coin', async (req, res) => {
   }
 })
 
-app.listen(8080, () => {
+app.listen(5000, () => {
   console.log('connected to coinpet!')
   console.log(`MONGO_URL:${dburl}`)
 })

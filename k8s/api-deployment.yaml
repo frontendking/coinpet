@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: coinpet-api
-          image: gcr.io/verdant-catcher-269008/coinpet-server:latest
+          image: gcr.io/verdant-catcher-269008/coinpet/api:latest
           ports:
             - containerPort: 5000
           env:
             - name: MONGO_URL
-              value: mongodb://mongo:27017/coinpet
+              value: mongodb://coinpet-db:27017/coinpet

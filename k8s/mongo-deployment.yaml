@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: coinpet-db
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: coinpet-db
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
         - name: coinpet-db
-          image: gcr.io/verdant-catcher-269008/helloworld-gke:latest
+          image: gcr.io/verdant-catcher-269008/coinpet/db:latest
           ports:
             - containerPort: 27017
           volumeMounts:

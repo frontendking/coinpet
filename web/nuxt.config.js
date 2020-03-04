@@ -4,6 +4,9 @@ export default {
   /*
   ** Headers of the page
   */
+  env: {
+    api_url: process.env.API_URL || 'http://localhost:5000'
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [

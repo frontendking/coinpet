@@ -1,39 +1,34 @@
 <template>
   <div class="container">
     <div>
-      <logo />
       <h1 class="title">
-        client
+        CoinPet
       </h1>
       <h2 class="subtitle">
-        My bedazzling Nuxt.js project
+        Hi! I will make you a rich :D
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <button @click="getCoin" v-html="'Steal Coin'" />
+      <pre>
+{{ JSON.stringify(coin) }}
+      </pre>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 
 export default {
-  components: {
-    Logo
+  data () {
+    return {
+      coin: null
+    }
+  },
+  methods: {
+    async getCoin () {
+      const apiUrl = process.env.api_url || 'http://localhost:5000'
+      const res = await fetch(`${apiUrl}/coin`)
+      this.coin = await res.json()
+    }
   }
 }
 </script>
@@ -68,5 +63,12 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+pre {
+  display: flex;
+  width: 100%;
+  padding: 3rem;
+  justify-content: center;
 }
 </style>
