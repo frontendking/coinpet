@@ -5,7 +5,7 @@
         CoinPet
       </h1>
       <h2 class="subtitle">
-        Hi! I will make you a rich :D
+        Hi! I will make you a rich :D wow!!
       </h2>
       <button @click="getCoin" v-html="'Steal Coin'" />
       <pre>
@@ -25,8 +25,7 @@ export default {
   },
   methods: {
     async getCoin () {
-      const apiUrl = process.env.api_url || 'http://localhost:5000'
-      const res = await fetch(`${apiUrl}/coin`)
+      const res = await fetch(`http://localhost:5000/coin`)
       this.coin = await res.json()
     }
   }

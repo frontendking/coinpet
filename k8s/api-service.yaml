@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: coinpet
+  name: coinpet-api
 spec:
   selector:
-    app: coinpet
+    app: coinpet-api
   ports:
     - port: 5000
       targetPort: 5000
