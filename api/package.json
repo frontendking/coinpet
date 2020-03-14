@@ -6,7 +6,8 @@
   "author": "ryuilhwan <ih.ryu.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node -r dotenv/config ./src/index.js",
+    "test": "mocha -r esm -r dotenv/config"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
