@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinpet-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinpet-api
+  template:
+    metadata:
+      labels:
+        app: coinpet-api
+    spec:
+      containers:
+        - name: coinpet-api
+          image: nonownonow/coinpet-api:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_URL
+              value: mongodb://coinpet-db:27017/coinpet

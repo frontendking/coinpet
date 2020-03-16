@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinpet-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinpet-db
+  template:
+    metadata:
+      labels:
+        app: coinpet-db
+    spec:
+      containers:
+        - name: coinpet-db
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: storage
+              mountPath: /data/db
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
