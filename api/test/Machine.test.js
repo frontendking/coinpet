@@ -1,22 +1,20 @@
 import { strict as assert } from 'assert'
-import { get_token } from '../src/Machine'
-const {
-  CLIENT_ID,
-  CLENT_SECRET
-} = process.env
+import * as x from '../src/Machine'
+
+const { CLIENT_ID, CLIENT_SECRET } = process.env
 
 describe('Machine', function () {
-  it('Machine', async function () {
-    this.timeout(3000)
-    const res = await get_token(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
-    assert.deepEqual(Object.keys(res), ['access_token', 'expires_in', 'scope', 'refresh_token', 'token_type'])
-  })
-  describe('token_type', ()=>{
-    when('client_credentials', ()=>{
-      it('should ')
+  describe('getToken', () => {
+    let authRes
+    it('getToken', async function () {
+      this.timeout(3000)
+      authRes = await x.getAccessToken(CLIENT_ID, CLIENT_SECRET)
+      assert.deepEqual(Object.keys(authRes), ['access_token', 'expires_in', 'scope', 'refresh_token', 'token_type'])
     })
-    when('refresh_token', ()=>{
-      it()
+    it('refreshToken', async function () {
+      this.timeout(3000)
+      const res = await x.getRefreshedToken(CLIENT_ID, CLIENT_SECRET, authRes.refresh_token)
+      assert.deepEqual(Object.keys(res), ['access_token', 'expires_in', 'scope', 'refresh_token', 'token_type'])
     })
   })
 })
