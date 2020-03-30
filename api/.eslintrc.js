@@ -19,5 +19,6 @@ module.exports = {
   },
   rules: {
     camelcase: 0,
+    'object-property-newline':0
   }
 }
